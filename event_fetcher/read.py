@@ -42,6 +42,7 @@ SIZE = len(df)
 
 # print(df['description'])
 
+
 fname= "filtered.csv"
 file = open(fname, "w")
 
