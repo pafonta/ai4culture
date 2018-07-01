@@ -43,19 +43,64 @@ SIZE = len(df)
 # print(df['description'])
 
 
-req_features= ['address', 'price', 'description', 'venue_type', 'performers', 'title', 'id', 'tags', 'categories' ]
-for v in df['id']:
-    data = requests.get('http://api.eventful.com/json/events/get?&id='+ v+ "&app_key=" + user_key).json()
-    # print(data)
-    # for i in range(len(data)):
-        # print(data["categories"]['id'])
-    for feature in req_features:
-        y = data[feature]
-        print(y)
-        print("==================")
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
+fname= "filtered.csv"
+file = open(fname, "w")
 
-for x in df['description']:
-    print(x)
-    print("============================")
-print(len(df))
+# req_features= ['address', 'price', 'description', 'venue_type', 'performers', 'title', 'id', 'tags', 'categories' ]
+
+headers = ['id', 'title', 'category_id', 'category_name', 'performer', 'creator', 'address',
+'price', 'decription', 'venue_type', 'tags']
+
+file.write( ",".join(headers))
+file.write("\n")
+
+for v in df['id']:
+    try:
+        data = requests.get('http://api.eventful.com/json/events/get?&id='+ v+ "&app_key=" + user_key).json()
+        # print(data)
+        # for i in range(len(data)):
+            # print(data["categories"]['id'])
+
+        relevant_tags = []
+        # " ".join(list(set(j["title"] for j in data["tags"]["tag"])))
+        for j in range(len(data["tags"]["tag"])):
+            relevant_tags.append(str(data["tags"]["tag"][j]["id"]))
+        relevant_tags = " ".join(relevant_tags)
+
+        print(relevant_tags)
+        entry= ",".join(
+        [
+        str(data["id"]).replace(",", " "),
+        str(data["title"]).replace(",", " "),
+        str(data["categories"]["category"][0]["id"]).replace(",", " "),
+        str(data["categories"]["category"][0]["name"]).replace(",", " "),
+        str(data["performers"]["performer"]["name"]).replace(",", " "),
+        str( data["performers"]["performer"]["creator"]).replace(",", " "),
+        str(data["address"]).replace(",", " "),
+        str(data["price"]).replace(",", " "),
+        str(data["description"]).replace(",", " "),
+        str(data["venue_type"]).replace(",", " "),
+        str(relevant_tags+"\n").replace(",", " ")
+        ]
+        )
+
+        file.write(entry)
+
+    except:
+        pass
+file.close()
+
+    # for feature in req_features:
+    #     y = data[feature]
+    #     print(y)
+    #     print("==================")
+    # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
+
+# for x in df['description']:
+#     print(x)
+#     print("============================")
+<<<<<<< HEAD
+# print(len(df))
+=======
+# print(len(df))
+>>>>>>> a50f6bf85b6ca6810c8d209808b856a1d39f9a62
