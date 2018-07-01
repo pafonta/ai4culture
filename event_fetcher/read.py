@@ -42,6 +42,7 @@ SIZE = len(df)
 
 # print(df['description'])
 
+
 fname= "filtered.csv"
 file = open(fname, "w")
 
@@ -98,4 +99,8 @@ file.close()
 # for x in df['description']:
 #     print(x)
 #     print("============================")
+<<<<<<< HEAD
 # print(len(df))
+=======
+# print(len(df))
+>>>>>>> a50f6bf85b6ca6810c8d209808b856a1d39f9a62
