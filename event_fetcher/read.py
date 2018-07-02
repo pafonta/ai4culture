@@ -80,9 +80,9 @@ for v in df['id']:
         str(data["price"]).replace(",", " "),
         str(data["description"]).replace(",", " "),
         str(data["venue_type"]).replace(",", " "),
-        str(relevant_tags+"\n").replace(",", " "),
+        str(relevant_tags).replace(",", " "),
         str(data["latitude"]).replace(",", " "),
-        str(data["longitude"]).replace(",", " ")
+        str(str(data["longitude"])+"\n").replace(",", " ")
         ]
         )
 
