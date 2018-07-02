@@ -49,7 +49,7 @@ file = open(fname, "w")
 # req_features= ['address', 'price', 'description', 'venue_type', 'performers', 'title', 'id', 'tags', 'categories' ]
 
 headers = ['id', 'title', 'category_id', 'category_name', 'performer', 'creator', 'address',
-'price', 'decription', 'venue_type', 'tags']
+'price', 'description', 'venue_type', 'tags','latitude','longitude']
 
 file.write( ",".join(headers))
 file.write("\n")
@@ -80,7 +80,9 @@ for v in df['id']:
         str(data["price"]).replace(",", " "),
         str(data["description"]).replace(",", " "),
         str(data["venue_type"]).replace(",", " "),
-        str(relevant_tags+"\n").replace(",", " ")
+        str(relevant_tags+"\n").replace(",", " "),
+        str(data["latitude"]).replace(",", " "),
+        str(data["longitude"]).replace(",", " ")
         ]
         )
 
@@ -99,8 +101,3 @@ file.close()
 # for x in df['description']:
 #     print(x)
 #     print("============================")
-<<<<<<< HEAD
-# print(len(df))
-=======
-# print(len(df))
->>>>>>> a50f6bf85b6ca6810c8d209808b856a1d39f9a62
