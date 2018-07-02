@@ -21,11 +21,12 @@ class QueryingService:
         query = """SELECT DISTINCT ?id WHERE {{
             ?id rdfs:label ?entity_name .
             ?id wdt:P31 ?x .  # instance_of
+            # FIXME We need to add humans.
             ?x wdt:P279* wd:Q215380 .  # subclass_of band
             ?id wdt:P136 ?genre .
             ?genre ?label ?subgenre_name .
-            FILTER(CONTAINS(LCASE(?entity_name), "{}"))
-            FILTER(CONTAINS(LCASE(?subgenre_name), "{}"))
+            FILTER(CONTAINS(LCASE(?entity_name), LCASE("{}")))
+            FILTER(CONTAINS(LCASE(?subgenre_name), LCASE("{}")))
         }}""".format(entity_name, entity_type)
         response = self.fetch(query)
         bindings = response['results']['bindings']
