@@ -1,0 +1,59 @@
+{
+  "music": [
+    "pop",
+    "rock",
+    "metal",
+    "heavymetal",
+    "band",
+    "concert",
+    "alternative",
+    "rocknrolln",
+    "rockstar",
+    "hiphop",
+    "electronic",
+    "rap",
+    "jazz",
+    "vocal",
+    "funk",
+    "dj",
+    "house",
+    "country",
+    "folk",
+    "techno",
+    "progressive",
+    "soul",
+    "reggae",
+    "reggaeton",
+    "latin",
+    "religious_devotional",
+    "indie",
+    "folk",
+    "bass"
+],
+  "architecture": [
+    "museum",
+    "attractions"
+  ],
+
+  "painting": [
+    "exhibition",
+    "museum",
+    "art"
+  ],
+  "sculpture":[
+    "exhibition",
+    "museum",
+    "art"
+  ],
+  "festival":[
+    "festival",
+    "festivals_parade",
+    "performing_arts",
+    "performing_arts_shows",
+    "dance",
+    "electronic",
+    "parties",
+    "social",
+    "singles_social"
+  ]
+}
